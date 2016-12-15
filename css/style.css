@@ -1288,38 +1288,46 @@ button {
     margin-left: 0;
     margin-right: 0;
     float: left; } }
+body {
+  margin: 0; }
+
 header {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #47B475; }
-  header::before, header::after {
-    content: ' ';
-    display: table; }
-  header::after {
-    clear: both; }
-  header h1 {
-    width: 66.66667%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      header h1 {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    header h1:last-child:not(:first-child) {
-      float: right; }
-  header #from-container {
-    width: 33.33333%;
-    float: left;
-    padding-left: 0.625rem;
-    padding-right: 0.625rem; }
-    @media screen and (min-width: 40em) {
-      header #from-container {
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem; } }
-    header #from-container:last-child:not(:first-child) {
-      float: right; }
+  background-color: #47B475;
+  padding: 1rem 0; }
+  header #top-bar {
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto; }
+    header #top-bar::before, header #top-bar::after {
+      content: ' ';
+      display: table; }
+    header #top-bar::after {
+      clear: both; }
+    header #top-bar h1 {
+      width: 66.66667%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      font-size: 3rem;
+      color: white;
+      margin: 0; }
+      @media screen and (min-width: 40em) {
+        header #top-bar h1 {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      header #top-bar h1:last-child:not(:first-child) {
+        float: right; }
+    header #top-bar #from-container {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; }
+      @media screen and (min-width: 40em) {
+        header #top-bar #from-container {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      header #top-bar #from-container:last-child:not(:first-child) {
+        float: right; }
 
 #message-container {
   max-width: 75rem;
@@ -1335,9 +1343,11 @@ header {
     float: left;
     padding-left: 0.625rem;
     padding-right: 0.625rem;
-    border: 1px solid #498467;
+    border: 1px solid #ccc;
     margin: 0;
-    list-style-type: none; }
+    list-style-type: none;
+    margin: 1rem 0;
+    padding: 1rem; }
     @media screen and (min-width: 40em) {
       #message-container ul {
         padding-left: 0.9375rem;
@@ -1345,21 +1355,45 @@ header {
     #message-container ul:last-child:not(:first-child) {
       float: right; }
 
-#user-input {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #47B475; }
-  #user-input::before, #user-input::after {
-    content: ' ';
-    display: table; }
-  #user-input::after {
-    clear: both; }
+#input-container {
+  background-color: #47B475;
+  padding: 2rem 0; }
+  #input-container #user-input {
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto; }
+    #input-container #user-input::before, #input-container #user-input::after {
+      content: ' ';
+      display: table; }
+    #input-container #user-input::after {
+      clear: both; }
+    #input-container #user-input input {
+      width: 66.66667%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; }
+      @media screen and (min-width: 40em) {
+        #input-container #user-input input {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      #input-container #user-input input:last-child:not(:first-child) {
+        float: right; }
+    #input-container #user-input button {
+      width: 33.33333%;
+      float: left;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem; }
+      @media screen and (min-width: 40em) {
+        #input-container #user-input button {
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem; } }
+      #input-container #user-input button:last-child:not(:first-child) {
+        float: right; }
 
 button {
   display: inline;
   background-color: white;
   padding: 1rem;
-  border: 1px solid black; }
+  border: 1px solid #ccc; }
 
 /*# sourceMappingURL=style.css.map */
