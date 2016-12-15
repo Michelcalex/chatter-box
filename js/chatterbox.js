@@ -34,6 +34,11 @@ function showChats(chat) {
 
 function sendMessage (){
     console.log("send message");
+    let textBox = document.querySelector('#user-message');
+    let userInput = textBox.value;
+    //AJAX request here
+    console.log(userInput);
+    textBox.value = '';
 }
 
 
