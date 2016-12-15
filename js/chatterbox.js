@@ -30,6 +30,7 @@ function showChats(chat) {
 
     // HELLLOOOOOOOO
     // MORE THIIIINGS
+    // MORE THIIIIIIIIINGS
     message.textContent = ('Message: ' + chat.message);
     item.appendChild(message);
 }
