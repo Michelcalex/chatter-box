@@ -7,14 +7,18 @@ $sm-screen: 320px;
 $md-screen: 768px;
 $lg-screen: 1224px;
 
-$bg-color: yellow;
+$header-color: #47B475;
+$primary-green: #498467;
+$secondary-green: #A6D3A0;
+
 
 body {
-	background-color: $bg-color;
+	//background-color: $bg-color;
 }
 
 header {
 	@include grid-row();
+	background-color: $header-color;
 	
 	h1 {
 		@include grid-column(8);
@@ -23,4 +27,27 @@ header {
 	#from-container{
 		@include grid-column(4);
 	}
+}
+
+#message-container {
+	@include grid-row();
+	
+	ul {
+		@include grid-column(12);
+		border: 1px solid $primary-green;
+		margin: 0;
+		list-style-type: none;
+	}
+}
+
+#user-input {
+	@include grid-row();
+	background-color: $header-color;
+}
+
+button {
+	display: inline;
+	background-color: white;
+	padding: 1rem;
+	border: 1px solid black;
 }
