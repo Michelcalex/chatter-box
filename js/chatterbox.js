@@ -38,8 +38,12 @@ function sendMessage (){
     let textBox = document.querySelector('#user-message');
     let userInput = textBox.value;
     //AJAX request here
-    console.log(userInput);
+    //console.log(userInput);
     textBox.value = '';
+    let fromBox = document.querySelector('#from');
+    let fromInput = fromBox.value;
+    fromBox.value = '';
+    //console.log(fromInput);
 }
 
 
