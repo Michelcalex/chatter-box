@@ -11,6 +11,9 @@ function init() {
     });
 
     request.send();
+
+    let button = document.querySelector('#send');
+    button.addEventListener('click', sendMessage);
 }
 
 function showChats(chat) {
@@ -27,5 +30,11 @@ function showChats(chat) {
     message.textContent = ('Message: ' + chat.message);
     item.appendChild(message);
 }
+
+
+function sendMessage (){
+    console.log("send message");
+}
+
 
 window.addEventListener('load', init);
