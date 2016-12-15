@@ -3,9 +3,8 @@
 @include foundation-global-styles;
 @include foundation-grid;
 
-$sm-screen: 320px;
+// breakpoint for tablet and up
 $md-screen: 768px;
-$lg-screen: 1224px;
 
 $header-color: #47B475;
 $primary-color: #498467;
@@ -17,6 +16,7 @@ html, body {
 	margin: 0;
 	position: relative;
 	height: 100%;
+	overflow: hidden;
 }
 
 header {
@@ -27,7 +27,11 @@ header {
 		@include grid-row();
 		
 		h1 {
-			@include grid-column(8);
+			@include grid-column(12);
+			@include breakpoint($md-screen) {
+				@include grid-column(8);
+			}
+			
 			font-size: 3rem;
 			color: white;
 			margin: 0;
@@ -35,6 +39,9 @@ header {
 		
 		#from-container{
 			@include grid-column(4);
+			@include breakpoint($md-screen) {
+				@include grid-column(4);
+			}
 		}
 	}
 }
@@ -48,9 +55,9 @@ header {
 		border: 1px solid $border-color;
 		margin: 0;
 		list-style-type: none;
-		margin: 1rem 0;
+		margin: 20px 0;
 		padding: 1rem;
-		height: calc(100% - 200px);
+		height: calc(100% - 240px);
 	}
 }
 
