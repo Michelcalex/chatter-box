@@ -1,0 +1,11 @@
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+.htaccess
+
+node_modules
+css/.sass-cache
+css/style.css.map
