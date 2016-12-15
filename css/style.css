@@ -1288,13 +1288,11 @@ button {
     margin-left: 0;
     margin-right: 0;
     float: left; } }
-body {
-  background-color: yellow; }
-
 header {
   max-width: 75rem;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  background-color: #47B475; }
   header::before, header::after {
     content: ' ';
     display: table; }
@@ -1322,5 +1320,46 @@ header {
         padding-right: 0.9375rem; } }
     header #from-container:last-child:not(:first-child) {
       float: right; }
+
+#message-container {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto; }
+  #message-container::before, #message-container::after {
+    content: ' ';
+    display: table; }
+  #message-container::after {
+    clear: both; }
+  #message-container ul {
+    width: 100%;
+    float: left;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    border: 1px solid #498467;
+    margin: 0;
+    list-style-type: none; }
+    @media screen and (min-width: 40em) {
+      #message-container ul {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+    #message-container ul:last-child:not(:first-child) {
+      float: right; }
+
+#user-input {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #47B475; }
+  #user-input::before, #user-input::after {
+    content: ' ';
+    display: table; }
+  #user-input::after {
+    clear: both; }
+
+button {
+  display: inline;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid black; }
 
 /*# sourceMappingURL=style.css.map */
