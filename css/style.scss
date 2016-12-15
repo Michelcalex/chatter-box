@@ -13,13 +13,15 @@ $secondary-color: #A6D3A0;
 $border-color: #ccc;
 
 
-body {
+html, body {
 	margin: 0;
+	position: relative;
+	height: 100%;
 }
 
 header {
 	background-color: $header-color;
-	padding: 1rem 0;
+	height: 100px;
 	
 	#top-bar {
 		@include grid-row();
@@ -39,6 +41,7 @@ header {
 
 #message-container {
 	@include grid-row();
+	height: 100%;
 	
 	ul {
 		@include grid-column(12);
@@ -47,12 +50,16 @@ header {
 		list-style-type: none;
 		margin: 1rem 0;
 		padding: 1rem;
+		height: calc(100% - 200px);
 	}
 }
 
 #input-container{
 	background-color: $header-color;
-	padding: 2rem 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
 	
 	#user-input {
 		@include grid-row();
