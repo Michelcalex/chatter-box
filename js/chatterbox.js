@@ -45,8 +45,10 @@ function sendMessage (){
 	
 	// Post message to chats
     // AJAX request here
-    console.log(userInput);
-    
+	let fromBox = document.querySelector('#from');
+    let fromInput = fromBox.value;
+    fromBox.value = '';
+    //console.log(fromInput);
 }
 
 
