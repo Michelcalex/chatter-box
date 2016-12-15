@@ -11,6 +11,9 @@ function init() {
     });
 
     request.send();
+
+    let button = document.querySelector('#send');
+    button.addEventListener('click', sendMessage);
 }
 
 function showChats(chat) {
@@ -24,8 +27,23 @@ function showChats(chat) {
     item.appendChild(user);
 
     let message = document.createElement('p');
+
+    // HELLLOOOOOOOO
+    // MORE THIIIINGS
+    // MORE THIIIIIIIIINGS
     message.textContent = ('Message: ' + chat.message);
     item.appendChild(message);
 }
+
+
+function sendMessage (){
+    console.log("send message");
+    let textBox = document.querySelector('#user-message');
+    let userInput = textBox.value;
+    //AJAX request here
+    console.log(userInput);
+    textBox.value = '';
+}
+
 
 window.addEventListener('load', init);
