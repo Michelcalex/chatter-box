@@ -1,0 +1,26 @@
+@import '../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+
+$sm-screen: 320px;
+$md-screen: 768px;
+$lg-screen: 1224px;
+
+$bg-color: yellow;
+
+body {
+	background-color: $bg-color;
+}
+
+header {
+	@include grid-row();
+	
+	h1 {
+		@include grid-column(8);
+	}
+	
+	#from-container{
+		@include grid-column(4);
+	}
+}
