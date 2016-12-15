@@ -28,9 +28,6 @@ function showChats(chat) {
 
     let message = document.createElement('p');
 
-    // HELLLOOOOOOOO
-    // MORE THIIIINGS
-    // MORE THIIIIIIIIINGS
     message.textContent = ('Message: ' + chat.message);
     item.appendChild(message);
 }
