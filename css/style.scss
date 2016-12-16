@@ -10,6 +10,9 @@ $header-color: #47B475;
 $primary-color: #498467;
 $secondary-color: #A6D3A0;
 $border-color: #ccc;
+$heading-txt: 'Bungee Shade', cursive;
+$primary-txt: 'Abel', sans-serif;
+
 
 
 html, body {
@@ -17,6 +20,7 @@ html, body {
 	position: relative;
 	height: 100%;
 	overflow: hidden;
+	font-family: $primary-txt;
 }
 
 header {
@@ -27,6 +31,7 @@ header {
 		@include grid-row();
 		
 		h1 {
+			font-family: $heading-txt;
 			@include grid-column(12);
 			@include breakpoint($md-screen) {
 				@include grid-column(8);

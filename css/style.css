@@ -1292,7 +1292,8 @@ html, body {
   margin: 0;
   position: relative;
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: "Abel", sans-serif; }
 
 header {
   background-color: #47B475;
@@ -1307,6 +1308,7 @@ header {
     header #top-bar::after {
       clear: both; }
     header #top-bar h1 {
+      font-family: "Bungee Shade", cursive;
       width: 100%;
       float: left;
       padding-left: 0.625rem;
