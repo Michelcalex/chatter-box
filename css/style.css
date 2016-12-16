@@ -1296,12 +1296,14 @@ html, body {
   font-family: "Abel", sans-serif; }
 
 header {
-  background-color: #47B475; }
+  background-color: #47B475;
+  padding: 0px 5px; }
   header #top-bar {
     max-width: 75rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 100px; }
     header #top-bar::before, header #top-bar::after {
@@ -1388,34 +1390,20 @@ header {
     #input-container #user-input::after {
       clear: both; }
     #input-container #user-input input {
-      width: 66.66667%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-      margin-bottom: 0px; }
-      @media screen and (min-width: 40em) {
+      margin-bottom: 0px;
+      margin-left: 10px; }
+      @media screen and (min-width: 48em) {
         #input-container #user-input input {
-          padding-left: 0.9375rem;
-          padding-right: 0.9375rem; } }
-      #input-container #user-input input:last-child:not(:first-child) {
-        float: right; }
+          margin: 0px; } }
     #input-container #user-input button {
-      width: 33.33333%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-      margin-left: 30px; }
-      @media screen and (min-width: 40em) {
+      margin-left: 30px;
+      margin-right: 10px;
+      background-color: white;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      width: 33.5%; }
+      @media screen and (min-width: 48em) {
         #input-container #user-input button {
-          padding-left: 0.9375rem;
-          padding-right: 0.9375rem; } }
-      #input-container #user-input button:last-child:not(:first-child) {
-        float: right; }
-
-button {
-  display: inline;
-  background-color: white;
-  padding: 1rem;
-  border: 1px solid #ccc; }
+          margin-right: 0px; } }
 
 /*# sourceMappingURL=style.css.map */
