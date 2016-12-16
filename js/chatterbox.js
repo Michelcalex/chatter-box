@@ -44,7 +44,7 @@ function sendMessage (){
 	
 	let request = new XMLHttpRequest();
 	
-    request.open('GET', 'http://api.queencityiron.com/chats');
+    request.open('POST', 'http://api.queencityiron.com/chats');
 	
 	let body = JSON.stringify({
 		from: document.querySelector('#from').value,
@@ -52,6 +52,10 @@ function sendMessage (){
 	});
 	
     document.querySelector('#user-message').value = '';
+	
+	request.addEventListener('load', function() {
+		getMessages();
+	});
 	
 	request.send(body);
 	
