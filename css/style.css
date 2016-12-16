@@ -1380,7 +1380,8 @@ header {
     list-style-type: none;
     margin: 20px 0;
     padding: 1rem;
-    height: calc(100% - 240px); }
+    height: calc(100% - 240px);
+    overflow-y: scroll; }
     @media screen and (min-width: 40em) {
       #message-container ul {
         padding-left: 0.9375rem;

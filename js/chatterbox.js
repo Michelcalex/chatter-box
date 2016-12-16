@@ -1,54 +1,60 @@
 function init() {
 	
-	// AJAX request for chats
-    let request = new XMLHttpRequest();
-    request.open('GET', 'http://api.queencityiron.com/chats');
-    request.addEventListener('load', function() {
-        let response = JSON.parse(request.responseText);
-        for(let i =0; i < response.chats.length; i++) {
-            let message = response.chats[i];
-			
-            showChats(message);
-            //console.log(message);
-        }
-    });
-    request.send();
+    getMessages();
 	
     let button = document.querySelector('#send');
     button.addEventListener('click', sendMessage);
 }
 
-function showChats(chat) {
-    let parent = document.querySelector('ul');
-    
-	// Create list item elements
-    let item = document.createElement('li');
-    parent.appendChild(item);
+function getMessages() {
+	
+	// AJAX request for chats
+	let request = new XMLHttpRequest();
+	
+    request.open('GET', 'http://api.queencityiron.com/chats');
+	
+    request.addEventListener('load', function() {
+		
+		let response = JSON.parse(request.responseText);
 
-		let user = document.createElement('p');
-		user.textContent = ('From: ' + chat.from);
-		item.appendChild(user);
+		let parent = document.querySelector('ul');
 
-		let message = document.createElement('p');
+		for(let i =0; i < response.chats.length; i++) {
+			
+			// Create list item elements
+			let item = document.createElement('li');
+			parent.appendChild(item);
 
-		message.textContent = ('Message: ' + chat.message);
-		item.appendChild(message);
+			let user = document.createElement('p');
+			user.textContent = ('From: ' + response.chats[i].from);
+			item.appendChild(user);
+
+			let message = document.createElement('p');
+
+			message.textContent = ('Message: ' + response.chats[i].message);
+			item.appendChild(message);
+		}
+	});
+	
+	request.send();
 }
 
 
 function sendMessage (){
-    
-	// Get user input
-	let textBox = document.querySelector('#user-message');
-    let userInput = textBox.value;
-	textBox.value = '';
 	
-	// Post message to chats
-    // AJAX request here
-	let fromBox = document.querySelector('#from');
-    let fromInput = fromBox.value;
-    fromBox.value = '';
-    //console.log(fromInput);
+	let request = new XMLHttpRequest();
+	
+    request.open('GET', 'http://api.queencityiron.com/chats');
+	
+	let body = JSON.stringify({
+		from: document.querySelector('#from').value,
+		message: document.querySelector('#user-message').value,
+	});
+	
+    document.querySelector('#user-message').value = '';
+	
+	request.send(body);
+	
 }
 
 
