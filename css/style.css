@@ -1303,70 +1303,32 @@ header {
     margin-right: auto;
     display: flex;
     align-items: center;
-    height: 100px;
-    padding: 0rem 0.625rem !important;
-    padding: 0px; }
+    height: 100px; }
     header #top-bar::before, header #top-bar::after {
       content: ' ';
       display: table; }
     header #top-bar::after {
       clear: both; }
     header #top-bar h1 {
-      width: 100%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
       font-family: "Bungee Shade", cursive;
       font-size: 2.5rem;
       color: white;
-      margin: 0;
       line-height: 2.7rem;
-      padding: 0px;
-      width: 65%; }
-      @media screen and (min-width: 40em) {
-        header #top-bar h1 {
-          padding-left: 0.9375rem;
-          padding-right: 0.9375rem; } }
-      header #top-bar h1:last-child:not(:first-child) {
-        float: right; }
+      padding: 0px 5px; }
       @media screen and (min-width: 48em) {
         header #top-bar h1 {
-          width: 66.66667%;
-          float: left;
-          padding-left: 0.625rem;
-          padding-right: 0.625rem;
           font-size: 3rem;
-          line-height: 0;
           width: 100%;
-          padding: 0px; } }
-  @media screen and (min-width: 48em) and (min-width: 40em) {
-    header #top-bar h1 {
-      padding-left: 0.9375rem;
-      padding-right: 0.9375rem; } }
-      @media screen and (min-width: 48em) {
-          header #top-bar h1:last-child:not(:first-child) {
-            float: right; } }
+          padding: 0px !important; } }
     header #top-bar #from-container {
-      width: 33.33333%;
-      float: left;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-      margin-left: 0.625rem;
-      padding: 0px; }
-      @media screen and (min-width: 40em) {
-        header #top-bar #from-container {
-          padding-left: 0.9375rem;
-          padding-right: 0.9375rem; } }
-      header #top-bar #from-container:last-child:not(:first-child) {
-        float: right; }
+      padding: 0px 5px; }
       @media screen and (min-width: 48em) {
         header #top-bar #from-container {
           width: 33.33333%;
           float: left;
           padding-left: 0.625rem;
           padding-right: 0.625rem;
-          margin-left: 0px;
-          padding: 0px; } }
+          padding: 0px !important; } }
   @media screen and (min-width: 48em) and (min-width: 40em) {
     header #top-bar #from-container {
       padding-left: 0.9375rem;

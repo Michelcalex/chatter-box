@@ -31,48 +31,28 @@ header {
 		display: flex;
 		align-items: center;
 		height: 100px;
-		padding: 0rem 0.625rem !important;
-
-		@include breakpoint($md-screen);
-			padding: 0px;
 		
 		h1 {
-			@include grid-column(12);
-			
 			font-family: $heading-txt;
 			font-size: 2.5rem;
 			color: white;
-			margin: 0;
 			line-height: 2.7rem;
-			padding: 0px;
-			width: 65%;
+			padding: 0px 5px;
 
 			@include breakpoint($md-screen) {
-				@include grid-column(8);
 				font-size: 3rem;
-				line-height: 0;
-				//padding: 0px;
 				width: 100%;
-				padding: 0px;
+				padding: 0px !important;
 			}
 		}
 		
 		#from-container{
-			@include grid-column(4);
-			//padding: 0px 0.625rem 0px 0px;
-			margin-left: 0.625rem;
-			padding: 0px;
-
-
+			padding: 0px 5px;
 
 			@include breakpoint($md-screen) {
 				@include grid-column(4);
-				margin-left: 0px;
-				padding: 0px;
-
-			
+				padding: 0px !important;
 			}
-
 
 				p {
 					margin-bottom: 0px;
