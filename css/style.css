@@ -1400,12 +1400,14 @@ header {
   background-color: #47B475;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  height: 100px; }
+  width: 100%; }
   #input-container #user-input {
     max-width: 75rem;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    height: 100px; }
     #input-container #user-input::before, #input-container #user-input::after {
       content: ' ';
       display: table; }
@@ -1415,7 +1417,8 @@ header {
       width: 66.66667%;
       float: left;
       padding-left: 0.625rem;
-      padding-right: 0.625rem; }
+      padding-right: 0.625rem;
+      margin-bottom: 0px; }
       @media screen and (min-width: 40em) {
         #input-container #user-input input {
           padding-left: 0.9375rem;
@@ -1426,7 +1429,8 @@ header {
       width: 33.33333%;
       float: left;
       padding-left: 0.625rem;
-      padding-right: 0.625rem; }
+      padding-right: 0.625rem;
+      margin-left: 30px; }
       @media screen and (min-width: 40em) {
         #input-container #user-input button {
           padding-left: 0.9375rem;
