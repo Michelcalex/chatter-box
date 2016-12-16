@@ -25,18 +25,21 @@ html, body {
 
 header {
 	background-color: $header-color;
-	height: 100px;
 	
 	#top-bar {
 		@include grid-row();
+		display: flex;
+		align-items: center;
+		height: 100px;
 		
 		h1 {
-			font-family: $heading-txt;
 			@include grid-column(12);
 			@include breakpoint($md-screen) {
 				@include grid-column(8);
 			}
 			
+			padding-left: 0px !important;
+			font-family: $heading-txt;
 			font-size: 3rem;
 			color: white;
 			margin: 0;
@@ -47,6 +50,15 @@ header {
 			@include breakpoint($md-screen) {
 				@include grid-column(4);
 			}
+
+
+				p {
+					margin-bottom: 0px;
+				}
+
+				#from {
+					margin-bottom: 0px;
+				}
 		}
 	}
 }
