@@ -1303,7 +1303,9 @@ header {
     margin-right: auto;
     display: flex;
     align-items: center;
-    height: 100px; }
+    height: 100px;
+    padding: 0rem 0.625rem !important;
+    padding: 0px; }
     header #top-bar::before, header #top-bar::after {
       content: ' ';
       display: table; }
@@ -1314,11 +1316,13 @@ header {
       float: left;
       padding-left: 0.625rem;
       padding-right: 0.625rem;
-      padding-left: 0px !important;
       font-family: "Bungee Shade", cursive;
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: white;
-      margin: 0; }
+      margin: 0;
+      line-height: 2.7rem;
+      padding: 0px;
+      width: 65%; }
       @media screen and (min-width: 40em) {
         header #top-bar h1 {
           padding-left: 0.9375rem;
@@ -1330,7 +1334,11 @@ header {
           width: 66.66667%;
           float: left;
           padding-left: 0.625rem;
-          padding-right: 0.625rem; } }
+          padding-right: 0.625rem;
+          font-size: 3rem;
+          line-height: 0;
+          width: 100%;
+          padding: 0px; } }
   @media screen and (min-width: 48em) and (min-width: 40em) {
     header #top-bar h1 {
       padding-left: 0.9375rem;
@@ -1342,7 +1350,9 @@ header {
       width: 33.33333%;
       float: left;
       padding-left: 0.625rem;
-      padding-right: 0.625rem; }
+      padding-right: 0.625rem;
+      margin-left: 0.625rem;
+      padding: 0px; }
       @media screen and (min-width: 40em) {
         header #top-bar #from-container {
           padding-left: 0.9375rem;
@@ -1354,7 +1364,9 @@ header {
           width: 33.33333%;
           float: left;
           padding-left: 0.625rem;
-          padding-right: 0.625rem; } }
+          padding-right: 0.625rem;
+          margin-left: 0px;
+          padding: 0px; } }
   @media screen and (min-width: 48em) and (min-width: 40em) {
     header #top-bar #from-container {
       padding-left: 0.9375rem;
