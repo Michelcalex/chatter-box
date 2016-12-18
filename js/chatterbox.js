@@ -1,4 +1,4 @@
-// Set timestamp of last ajax call
+// Keep track of latest data item displayed
 let	timestamp = 0;
 
 function init() {
@@ -7,9 +7,6 @@ function init() {
 	
     let button = document.querySelector('#send');
     button.addEventListener('click', sendMessage);
-	
-	let remove = document.querySelector('#delete');
-    remove.addEventListener('click', deleteMessage);
 }
 
 function getMessages() {
@@ -34,30 +31,32 @@ function getMessages() {
 				let item = document.createElement('li');
 				parent.appendChild(item);
 			
-				let added = document.createElement('p');
-				added.textContent = ('added: ' + Date.parse(chat.added) +  ', stamp = ' + timestamp);
-				item.appendChild(added);
-
 				let user = document.createElement('p');
-				user.textContent = ('From: ' + chat.from);
+				user.classList.add('from-div');
+				user.textContent = (chat.from + ': ');
 				item.appendChild(user);
-
+				
+				/*
+				 * Filter message content, then display
+				 */
 				let message = document.createElement('p');
+				message.classList.add('message-div');
 				let text = chat.message;
 
-				/*let target = text.includes('app');
-				if (target) {
-					text = 'MARGO';
-				}*/
-
-				if (text.includes('app')) {
-					text = 'MARGO';
+				// Highlight text w '!important' tag
+				if (text.includes('!important')) {
+					message.classList.add('highlight');
 				}
 
-				message.textContent = ('Message: ' + text);
+				message.textContent = (text);
 				item.appendChild(message);
 				
+				/* end message */
+
 				timestamp = Date.parse(chat.added);
+				
+				// Continue to check for new chats from other users
+				setTimeout(getMessages, 5000);
 			}
 		}
 	});
@@ -80,25 +79,6 @@ function sendMessage (){
 	request.addEventListener('load', function() {
 		getMessages();
 		document.querySelector('#user-message').value = '';
-	});
-	
-	request.send(body);
-	
-}
-
-
-function deleteMessage (){
-	
-	let request = new XMLHttpRequest();
-	
-    request.open('DELETE', 'http://api.queencityiron.com/chats');
-	
-	let body = {
-		'id': 3,
-	}
-	
-    request.addEventListener('load', function() {
-		//getMessages();
 	});
 	
 	request.send(body);

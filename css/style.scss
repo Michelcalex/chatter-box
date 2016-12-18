@@ -71,17 +71,29 @@ header {
 	
 	ul {
 		@include grid-column(12);
-		border: 1px solid $border-color;
 		margin: 0;
 		list-style-type: none;
 		margin: 20px 0;
 		padding: 1rem;
 		height: calc(100% - 240px);
 		overflow-y: scroll;
+		@include breakpoint($md-screen) {
+			border: 2px solid $border-color;
+		}
 		
 		li {
-			border-bottom: 1px solid #e6e6e6;
+			display: flex;
+			border-bottom: 2px solid #e6e6e6;
     		margin-bottom: 15px;
+			
+			.from-div {
+				font-weight: bold;
+				margin-right: 20px;
+			}
+			
+			.highlight {
+				background-color: #FFFB77;
+			}
 		}
 		
 		li:last-child {
@@ -96,6 +108,7 @@ header {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	height: 100px;
 	
 	#user-input {
 		@include grid-row();
