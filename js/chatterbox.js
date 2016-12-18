@@ -47,11 +47,19 @@ function getMessages() {
 				let text = chat.message;
 				
 				//let image = /\[image=([0-z]*)\]/;
-				let image = /\[image=(.*)\]/;
+				let image = /\[image=(.*)\]/g;
 				if ( image.test(text) ) {
 					//text.replace(image, '<img src='$1'">');
 					message = document.createElement('img');
 					text = text.replace(image, '$1');
+					message.src = text;
+				}
+				
+				let emoji = /:([^:]*):/g;
+				if ( emoji.test(text) ) {
+					message = document.createElement('img');
+					message.classList.add('emoji');
+					text = text.replace(emoji, 'emoji/$1.png');
 					message.src = text;
 				}
 				
