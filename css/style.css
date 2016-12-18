@@ -1313,6 +1313,7 @@ header {
       float: left;
       padding-left: 0.625rem;
       padding-right: 0.625rem;
+      padding-left: 0;
       font-size: 3rem;
       color: white;
       margin: 0; }
@@ -1388,6 +1389,12 @@ header {
         padding-right: 0.9375rem; } }
     #message-container ul:last-child:not(:first-child) {
       float: right; }
+    #message-container ul li {
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 15px; }
+    #message-container ul li:last-child {
+      border-bottom: none;
+      margin-bottom: 0; }
 
 #input-container {
   background-color: #47B475;

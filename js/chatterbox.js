@@ -1,9 +1,15 @@
+// Set timestamp of last ajax call
+let	timestamp = 0;
+
 function init() {
 	
-    getMessages();
+	getMessages();
 	
     let button = document.querySelector('#send');
     button.addEventListener('click', sendMessage);
+	
+	let remove = document.querySelector('#delete');
+    remove.addEventListener('click', deleteMessage);
 }
 
 function getMessages() {
@@ -19,20 +25,40 @@ function getMessages() {
 
 		let parent = document.querySelector('ul');
 
-		for(let i =0; i < response.chats.length; i++) {
+		for(let i=0; i < response.chats.length; i++) {
+			let chat = response.chats[i];
 			
-			// Create list item elements
-			let item = document.createElement('li');
-			parent.appendChild(item);
+			// Only add newest elements
+			if ( Date.parse(chat.added) > timestamp) {
+				// Create list item elements
+				let item = document.createElement('li');
+				parent.appendChild(item);
+			
+				let added = document.createElement('p');
+				added.textContent = ('added: ' + Date.parse(chat.added) +  ', stamp = ' + timestamp);
+				item.appendChild(added);
 
-			let user = document.createElement('p');
-			user.textContent = ('From: ' + response.chats[i].from);
-			item.appendChild(user);
+				let user = document.createElement('p');
+				user.textContent = ('From: ' + chat.from);
+				item.appendChild(user);
 
-			let message = document.createElement('p');
+				let message = document.createElement('p');
+				let text = chat.message;
 
-			message.textContent = ('Message: ' + response.chats[i].message);
-			item.appendChild(message);
+				/*let target = text.includes('app');
+				if (target) {
+					text = 'MARGO';
+				}*/
+
+				if (text.includes('app')) {
+					text = 'MARGO';
+				}
+
+				message.textContent = ('Message: ' + text);
+				item.appendChild(message);
+				
+				timestamp = Date.parse(chat.added);
+			}
 		}
 	});
 	
@@ -51,10 +77,28 @@ function sendMessage (){
 		message: document.querySelector('#user-message').value,
 	});
 	
-    document.querySelector('#user-message').value = '';
-	
 	request.addEventListener('load', function() {
 		getMessages();
+		document.querySelector('#user-message').value = '';
+	});
+	
+	request.send(body);
+	
+}
+
+
+function deleteMessage (){
+	
+	let request = new XMLHttpRequest();
+	
+    request.open('DELETE', 'http://api.queencityiron.com/chats');
+	
+	let body = {
+		'id': 3,
+	}
+	
+    request.addEventListener('load', function() {
+		//getMessages();
 	});
 	
 	request.send(body);
