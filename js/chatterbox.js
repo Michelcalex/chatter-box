@@ -7,6 +7,9 @@ function init() {
 	
     let button = document.querySelector('#send');
     button.addEventListener('click', sendMessage);
+	
+	/*let remove = document.querySelector('#delete');
+    remove.addEventListener('click', deleteMessage);*/
 }
 
 function getMessages() {
@@ -42,7 +45,16 @@ function getMessages() {
 				let message = document.createElement('p');
 				message.classList.add('message-div');
 				let text = chat.message;
-
+				
+				//let image = /\[image=([0-z]*)\]/;
+				let image = /\[image=(.*)\]/;
+				if ( image.test(text) ) {
+					//text.replace(image, '<img src='$1'">');
+					message = document.createElement('img');
+					text = text.replace(image, '$1');
+					message.src = text;
+				}
+				
 				// Highlight text w '!important' tag
 				if (text.includes('!important')) {
 					message.classList.add('highlight');
@@ -50,8 +62,9 @@ function getMessages() {
 
 				message.textContent = (text);
 				item.appendChild(message);
-				
-				/* end message */
+				/*
+				 * End filter messages
+				 */
 
 				timestamp = Date.parse(chat.added);
 				
@@ -79,6 +92,26 @@ function sendMessage (){
 	request.addEventListener('load', function() {
 		getMessages();
 		document.querySelector('#user-message').value = '';
+	});
+	
+	request.send(body);
+	
+}
+
+
+function deleteMessage() {
+	
+	let request = new XMLHttpRequest();
+	
+    request.open('DELETE', 'http://api.queencityiron.com/chats');
+	
+	let body = {
+		'id': 2,
+	}
+	
+    request.addEventListener('load', function() {
+		getMessages();
+		console.log('delete');
 	});
 	
 	request.send(body);
