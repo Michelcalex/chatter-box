@@ -10,6 +10,9 @@ function init() {
 	
 	/*let remove = document.querySelector('#delete');
     remove.addEventListener('click', deleteMessage);*/
+	
+	let info = document.querySelector('#info');
+    info.addEventListener('click', getInfo);
 }
 
 function getMessages() {
@@ -61,6 +64,28 @@ function getMessages() {
 					message.classList.add('emoji');
 					text = text.replace(emoji, 'emoji/$1.png');
 					message.src = text;
+					
+					/* Looping through regex
+					https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+					
+					let match;
+					while (match = emoji.exec(text)) {
+						console.log('found', match[1], 'at', match.index);
+					}*/
+				}
+				
+				if ( emoji.test(text) ) {
+					let emArray;
+					while ((emArray = emoji.exec(text)) !== null) {
+						
+						
+						let emParent = document.createElement('img');
+						
+						let msg = emArray[0];
+						console.log(msg);
+						
+						message.appendChild(emParent);
+					}
 				}
 				
 				// Highlight text w '!important' tag
@@ -114,16 +139,23 @@ function deleteMessage() {
     request.open('DELETE', 'http://api.queencityiron.com/chats');
 	
 	let body = {
-		'id': 2,
+		id: 37,
 	}
 	
+	console.log('here');
     request.addEventListener('load', function() {
 		getMessages();
-		console.log('delete');
+		console.log('message deleted');
 	});
 	
-	request.send(body);
+	//request.send(body);
 	
+}
+
+function getInfo() {
+	alert(
+		'Use !important to flag priority messages \nImage syntax-  [image=placehold.it/350x150] \nEmoji syntax- :smile_cat:'
+	);
 }
 
 
