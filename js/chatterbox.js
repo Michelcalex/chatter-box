@@ -10,46 +10,30 @@ function init() {
 	
 	let remove = document.querySelector('#delete');
     remove.addEventListener('click', deleteMessage);
-	
-	/*let edit = document.querySelector('#edit');
-    edit.addEventListener('click', editMessage);*/
-	
-	let info = document.querySelector('#info');
-    info.addEventListener('click', getInfo);
 }
+
 
 function getMessages() {
 	
 	// AJAX request for chats
 	let request = new XMLHttpRequest();
-	
     request.open('GET', 'http://api.queencityiron.com/chats');
-	
     request.addEventListener('load', function() {
 		
 		let response = JSON.parse(request.responseText);
-
-		let parent = document.querySelector('ul');
+		
 
 		for(let i=0; i < response.chats.length; i++) {
 			let chat = response.chats[i];
 			
 			// Only add newest elements
 			if ( Date.parse(chat.added) > timestamp) {
-				// Create list item elements
-				let item = document.createElement('li');
-				parent.appendChild(item);
-			
-				let user = document.createElement('p');
-				user.classList.add('from-div');
-				user.textContent = (chat.from + ': ');
-				item.appendChild(user);
 				
-				/*
-				 * Filter message content, then display
-				 */
-				let message = document.createElement('p');
-				message.classList.add('message-div');
+				// Create list item elements
+				let chatItem = document.createElement('li');
+				
+				
+				/*** Filter message content, then display ***/
 				let text = chat.message;
 				
 				//let image = /\[image=([0-z]*)\]/;
@@ -81,7 +65,6 @@ function getMessages() {
 					let emArray;
 					while ((emArray = emoji.exec(text)) !== null) {
 						
-						
 						let emParent = document.createElement('img');
 						
 						let msg = emArray[0];
@@ -95,13 +78,21 @@ function getMessages() {
 				if (text.includes('!important')) {
 					message.classList.add('highlight');
 				}
-
-				message.textContent = (text);
-				item.appendChild(message);
-				/*
-				 * End filter messages
-				 */
-
+				
+				chatItem.innerHTML = Mustache.render(
+					document.querySelector('#chat-template').innerHTML,
+					{	user: chat.from,
+						message: text
+					}
+				);
+				
+				let chatDiv = document.querySelector('ul');
+				chatDiv.appendChild(chatItem);
+				
+				/*** End filter messages ***/
+				
+				
+				
 				timestamp = Date.parse(chat.added);
 				
 				// Continue to check for new chats from other users
@@ -117,7 +108,6 @@ function getMessages() {
 function sendMessage (){
 	
 	let request = new XMLHttpRequest();
-	
     request.open('POST', 'http://api.queencityiron.com/chats');
 	
 	let body = JSON.stringify({
@@ -138,11 +128,9 @@ function sendMessage (){
 function deleteMessage() {
 	
 	let request = new XMLHttpRequest();
-	
     request.open('DELETE', 'http://api.queencityiron.com/chats');
 	
 	let msgID = document.querySelector('#chatID').value;
-	
 	let body = JSON.stringify({
 		id: parseInt(msgID),
 	});
@@ -152,27 +140,6 @@ function deleteMessage() {
 		chats.innerHTML = '';
 		timestamp = 0;
 		getMessages();
-	});
-	
-	request.send(body);
-	
-}
-
-function editMessage() {
-	
-	let request = new XMLHttpRequest();
-	
-    request.open('PUT', 'http://api.queencityiron.com/chats');
-	
-	let body = JSON.stringify({
-		id: 4,
-		from: 'person 2',
-		message: 'this has been edited',
-	});
-	
-    request.addEventListener('load', function() {
-		getMessages();
-		console.log('message edited');
 	});
 	
 	request.send(body);

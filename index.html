@@ -7,10 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Chatter Box</title>
+	
 	<link rel="stylesheet" href="css/foundation.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+	
+	<script type="x-mustache-template" id="chat-template">
+		<p class="from-div">{{ user }}: </p>
+		<p class="message-div">{{ message }}</p>
+	</script>
 </head>
 
 <body>
@@ -32,17 +38,16 @@
 		<div id="user-input">
 			<input type="text" placeholder="user message here" id="user-message">
 			<button id="send">Send</button>
-			<button id="info">Shortcodes</button>
-			<input type="number" placeholder="chatID" id="chatID" min="1">
-			<button id="delete">Delete</button>
 			
-			<!--https://github.com/Ranks/emojify.js/tree/master/dist/images/basic-->
+			<input type="number" placeholder="chatID" id="chatID" min="1">
+			<button id="delete">Delete <span id="deleteID"></span></button>
 		</div>
 	</section>
 	
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/foundation.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 	<script src="js/chatterbox.js"></script>
 </body>
 	
