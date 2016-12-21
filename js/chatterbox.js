@@ -1,6 +1,7 @@
 // Keep track of latest data item displayed
 let	timestamp = 0;
 let msgID;
+let btnUpdate = document.querySelector('#deleteID');
 
 function init() {
 	
@@ -123,7 +124,6 @@ function sendMessage (){
 	
 	request.addEventListener('load', function() {
 		getMessages();
-		document.querySelector('#user-message').value = '';
 	});
 	
 	request.send(body);
@@ -139,7 +139,6 @@ function setChatId() {
 			// this value will be used to delete message by ID
 			msgID = msg[i].value; 
 			
-			let btnUpdate = document.querySelector('#deleteID');
 			btnUpdate.textContent = ' ' + msgID + '?';
 		});
 	}
@@ -157,6 +156,9 @@ function deleteMessage() {
 	
     request.addEventListener('load', function() {
 		let chats = document.querySelector('ul');
+		btnUpdate.textContent = '';
+		
+		// Repopulate all chats so that deleted msg is removed
 		chats.innerHTML = '';
 		timestamp = 0;
 		getMessages();
