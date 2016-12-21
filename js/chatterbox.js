@@ -8,8 +8,11 @@ function init() {
     let button = document.querySelector('#send');
     button.addEventListener('click', sendMessage);
 	
-	/*let remove = document.querySelector('#delete');
-    remove.addEventListener('click', deleteMessage);*/
+	let remove = document.querySelector('#delete');
+    remove.addEventListener('click', deleteMessage);
+	
+	/*let edit = document.querySelector('#edit');
+    edit.addEventListener('click', editMessage);*/
 	
 	let info = document.querySelector('#info');
     info.addEventListener('click', getInfo);
@@ -138,17 +141,41 @@ function deleteMessage() {
 	
     request.open('DELETE', 'http://api.queencityiron.com/chats');
 	
-	let body = {
-		id: 37,
-	}
+	let msgID = document.querySelector('#chatID').value;
 	
-	console.log('here');
-    request.addEventListener('load', function() {
-		getMessages();
-		console.log('message deleted');
+	let body = JSON.stringify({
+		id: parseInt(msgID),
 	});
 	
-	//request.send(body);
+    request.addEventListener('load', function() {
+		let chats = document.querySelector('ul');
+		chats.innerHTML = '';
+		timestamp = 0;
+		getMessages();
+	});
+	
+	request.send(body);
+	
+}
+
+function editMessage() {
+	
+	let request = new XMLHttpRequest();
+	
+    request.open('PUT', 'http://api.queencityiron.com/chats');
+	
+	let body = JSON.stringify({
+		id: 4,
+		from: 'person 2',
+		message: 'this has been edited',
+	});
+	
+    request.addEventListener('load', function() {
+		getMessages();
+		console.log('message edited');
+	});
+	
+	request.send(body);
 	
 }
 
