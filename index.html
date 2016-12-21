@@ -16,6 +16,7 @@
 	<script type="x-mustache-template" id="chat-template">
 		<p class="from-div">{{ user }}: </p>
 		<p class="message-div">{{ message }}</p>
+		<p class="message-id">id: {{ id }}</p>
 	</script>
 </head>
 
@@ -39,8 +40,7 @@
 			<input type="text" placeholder="user message here" id="user-message">
 			<button id="send">Send</button>
 			
-			<input type="number" placeholder="chatID" id="chatID" min="1">
-			<button id="delete">Delete <span id="deleteID"></span></button>
+			<button id="delete">Delete Message<span id="deleteID"></span></button>
 		</div>
 	</section>
 	

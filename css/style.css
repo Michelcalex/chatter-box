@@ -1365,6 +1365,12 @@ header {
         margin-right: 20px; }
       #message-container ul li .highlight {
         background-color: #FFFB77; }
+      #message-container ul li .message-id {
+        font-weight: bold;
+        margin-left: auto; }
+    #message-container ul li:hover, #message-container ul li:focus {
+      cursor: pointer;
+      background: #F5F5F5; }
     #message-container ul li:last-child {
       border-bottom: none;
       margin-bottom: 0; }
@@ -1389,7 +1395,8 @@ header {
     #input-container #user-input::after {
       clear: both; }
     #input-container #user-input input {
-      margin-bottom: 0px; }
+      margin-bottom: 0px;
+      height: 50px; }
       @media screen and (min-width: 48em) {
         #input-container #user-input input {
           margin: 0px; } }

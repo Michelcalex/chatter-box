@@ -96,6 +96,16 @@ header {
 			.highlight {
 				background-color: #FFFB77;
 			}
+			
+			.message-id {
+				font-weight: bold;
+				margin-left: auto;
+			}
+		}
+		
+		li:hover, li:focus {
+			cursor: pointer;
+			background: #F5F5F5;
 		}
 		
 		li:last-child {
@@ -121,7 +131,7 @@ header {
 		
 		input {
 			margin-bottom: 0px;
-			//margin-left: 10px;
+			height: 50px;
 
 			@include breakpoint($md-screen) {
 				margin: 0px;

@@ -1,5 +1,6 @@
 // Keep track of latest data item displayed
 let	timestamp = 0;
+let msgID;
 
 function init() {
 	
@@ -10,6 +11,7 @@ function init() {
 	
 	let remove = document.querySelector('#delete');
     remove.addEventListener('click', deleteMessage);
+	
 }
 
 
@@ -31,6 +33,7 @@ function getMessages() {
 				
 				// Create list item elements
 				let chatItem = document.createElement('li');
+				chatItem.setAttribute('value', chat.id);
 				
 				
 				/*** Filter message content, then display ***/
@@ -82,16 +85,19 @@ function getMessages() {
 				chatItem.innerHTML = Mustache.render(
 					document.querySelector('#chat-template').innerHTML,
 					{	user: chat.from,
-						message: text
+						message: text,
+						id: chat.id,
 					}
 				);
 				
 				let chatDiv = document.querySelector('ul');
 				chatDiv.appendChild(chatItem);
+				/*** End filter/display messages ***/
 				
-				/*** End filter messages ***/
 				
-				
+				// Wait until list items are populated
+				// Add chat id to each list item value
+				setChatId();
 				
 				timestamp = Date.parse(chat.added);
 				
@@ -125,14 +131,28 @@ function sendMessage (){
 }
 
 
+// Can only be called after list items are populated
+function setChatId() {
+	let msg = document.querySelectorAll('li');
+	for (let i=0; i<msg.length; i++) {
+		msg[i].addEventListener('click', function() {
+			// this value will be used to delete message by ID
+			msgID = msg[i].value; 
+			
+			let btnUpdate = document.querySelector('#deleteID');
+			btnUpdate.textContent = ' ' + msgID + '?';
+		});
+	}
+}
+
+
 function deleteMessage() {
 	
 	let request = new XMLHttpRequest();
     request.open('DELETE', 'http://api.queencityiron.com/chats');
 	
-	let msgID = document.querySelector('#chatID').value;
 	let body = JSON.stringify({
-		id: parseInt(msgID),
+		id: msgID,
 	});
 	
     request.addEventListener('load', function() {
