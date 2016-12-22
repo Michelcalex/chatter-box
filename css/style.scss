@@ -86,7 +86,7 @@ header {
 		li {
 			display: flex;
 			border-bottom: 2px solid #e6e6e6;
-    		margin-bottom: 15px;
+    		padding: .5rem;
 			
 			.from-div {
 				font-weight: bold;
@@ -100,6 +100,15 @@ header {
 			.message-id {
 				font-weight: bold;
 				margin-left: auto;
+			}
+			
+			.emoji img {
+				width: 32px;
+				height: 32px;
+			}
+			
+			.image img {
+				max-width: 400px;
 			}
 		}
 		
@@ -150,13 +159,4 @@ header {
 			}
 		}
 	}
-}
-
-img.emoji {
-	width: 32px;
-	height: 32px;
-}
-
-img.image {
-	max-width: 400px;
 }

@@ -1359,7 +1359,7 @@ header {
     #message-container ul li {
       display: flex;
       border-bottom: 2px solid #e6e6e6;
-      margin-bottom: 15px; }
+      padding: .5rem; }
       #message-container ul li .from-div {
         font-weight: bold;
         margin-right: 20px; }
@@ -1368,6 +1368,11 @@ header {
       #message-container ul li .message-id {
         font-weight: bold;
         margin-left: auto; }
+      #message-container ul li .emoji img {
+        width: 32px;
+        height: 32px; }
+      #message-container ul li .image img {
+        max-width: 400px; }
     #message-container ul li:hover, #message-container ul li:focus {
       cursor: pointer;
       background: #F5F5F5; }
@@ -1409,12 +1414,5 @@ header {
       @media screen and (min-width: 48em) {
         #input-container #user-input button {
           margin-right: 0px; } }
-
-img.emoji {
-  width: 32px;
-  height: 32px; }
-
-img.image {
-  max-width: 400px; }
 
 /*# sourceMappingURL=style.css.map */

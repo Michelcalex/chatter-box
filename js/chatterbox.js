@@ -41,46 +41,33 @@ function getMessages() {
 				// =================================================================
 					let usrMsg = chat.message;
 					let imgSrc;
-					let imgClass;
+					let msgClass;
 					
 					let imageRegex = /\[image=(.*)\]/g; //  /\[image=([0-z]*)\]/
 					if ( imageRegex.test(usrMsg) ) {
 						imgSrc = usrMsg.replace(imageRegex, '$1');
-						imgClass = 'image';
+						msgClass = 'image';
 						usrMsg = '';
 					}
 					
 					let emojiRegex = /:([^:]*):/g;
 					if ( emojiRegex.test(usrMsg) ) {
 						imgSrc = usrMsg.replace(emojiRegex, 'emoji/$1.png');
-						imgClass = 'emoji';
+						msgClass = 'emoji';
 						usrMsg = '';
 						
 						/* Looping through regex
 						https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
 						
 						let match;
-						while (match = emoji.exec(usrMsg)) {
+						while (match = emojiRegex.exec(usrMsg)) {
 							console.log('found', match[1], 'at', match.index);
 						}*/
 					}
-					
-					/*if ( emojiRegex.test(usrMsg) ) {
-						let emArray;
-						while ((emArray = emoji.exec(usrMsg)) !== null) {
-						
-							let emParent = document.createElement('img');
-							
-							let msg = emArray[0];
-							console.log(msg);
-							
-							message.appendChild(emParent);
-						}
-					}*/
 				
 					// Highlight text w '!important' tag
 					if (usrMsg.includes('!important')) {
-						message.classList.add('highlight');
+						msgClass = 'highlight';
 					}
 				// ====================================================
 				// End filter messages
@@ -92,7 +79,7 @@ function getMessages() {
 					{	user: chat.from,
 						message: usrMsg,
 						image: imgSrc,
-						class: imgClass,
+						class: msgClass,
 						id: chat.id,
 					}
 				);
@@ -168,12 +155,6 @@ function deleteMessage() {
 	});
 	
 	request.send(body);
-}
-
-function getInfo() {
-	alert(
-		'Use !important to flag priority messages \nImage syntax-  [image=placehold.it/350x150] \nEmoji syntax- :smile_cat:'
-	);
 }
 
 
