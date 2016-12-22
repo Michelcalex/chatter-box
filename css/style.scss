@@ -55,14 +55,14 @@ header {
 		}
 		
 		#from-container{
-
-				p {
-					margin-bottom: 0px;
-				}
-
-				#from {
-					margin-bottom: 0px;
-				}
+			
+			p {
+				margin-bottom: 0px;
+			}
+			
+			#from {
+				margin-bottom: 0px;
+			}
 		}
 	}
 }
@@ -140,7 +140,6 @@ header {
 		
 		button {
 			margin-left: 30px;
-			//margin-right: 10px;
 			background-color: white;
 			padding: 1rem;
 			border: 1px solid $border-color;
@@ -156,4 +155,8 @@ header {
 img.emoji {
 	width: 32px;
 	height: 32px;
+}
+
+img.image {
+	max-width: 400px;
 }

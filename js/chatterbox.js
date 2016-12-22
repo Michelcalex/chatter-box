@@ -37,63 +37,69 @@ function getMessages() {
 				chatItem.setAttribute('value', chat.id);
 				
 				
-				/*** Filter message content, then display ***/
-				let text = chat.message;
-				
-				//let image = /\[image=([0-z]*)\]/;
-				let image = /\[image=(.*)\]/g;
-				if ( image.test(text) ) {
-					//text.replace(image, '<img src='$1'">');
-					message = document.createElement('img');
-					text = text.replace(image, '$1');
-					message.src = text;
-				}
-				
-				let emoji = /:([^:]*):/g;
-				if ( emoji.test(text) ) {
-					message = document.createElement('img');
-					message.classList.add('emoji');
-					text = text.replace(emoji, 'emoji/$1.png');
-					message.src = text;
+				// 1. Filter message content for regex (images, emojis, !important)
+				// =================================================================
+					let usrMsg = chat.message;
+					let imgSrc;
+					let imgClass;
 					
-					/* Looping through regex
-					https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
-					
-					let match;
-					while (match = emoji.exec(text)) {
-						console.log('found', match[1], 'at', match.index);
-					}*/
-				}
-				
-				if ( emoji.test(text) ) {
-					let emArray;
-					while ((emArray = emoji.exec(text)) !== null) {
-						
-						let emParent = document.createElement('img');
-						
-						let msg = emArray[0];
-						console.log(msg);
-						
-						message.appendChild(emParent);
+					let imageRegex = /\[image=(.*)\]/g; //  /\[image=([0-z]*)\]/
+					if ( imageRegex.test(usrMsg) ) {
+						imgSrc = usrMsg.replace(imageRegex, '$1');
+						imgClass = 'image';
+						usrMsg = '';
 					}
-				}
+					
+					let emojiRegex = /:([^:]*):/g;
+					if ( emojiRegex.test(usrMsg) ) {
+						imgSrc = usrMsg.replace(emojiRegex, 'emoji/$1.png');
+						imgClass = 'emoji';
+						usrMsg = '';
+						
+						/* Looping through regex
+						https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+						
+						let match;
+						while (match = emoji.exec(usrMsg)) {
+							console.log('found', match[1], 'at', match.index);
+						}*/
+					}
+					
+					/*if ( emojiRegex.test(usrMsg) ) {
+						let emArray;
+						while ((emArray = emoji.exec(usrMsg)) !== null) {
+						
+							let emParent = document.createElement('img');
+							
+							let msg = emArray[0];
+							console.log(msg);
+							
+							message.appendChild(emParent);
+						}
+					}*/
 				
-				// Highlight text w '!important' tag
-				if (text.includes('!important')) {
-					message.classList.add('highlight');
-				}
+					// Highlight text w '!important' tag
+					if (usrMsg.includes('!important')) {
+						message.classList.add('highlight');
+					}
+				// ====================================================
+				// End filter messages
 				
+				
+				// 2. Now display messages
 				chatItem.innerHTML = Mustache.render(
 					document.querySelector('#chat-template').innerHTML,
 					{	user: chat.from,
-						message: text,
+						message: usrMsg,
+						image: imgSrc,
+						class: imgClass,
 						id: chat.id,
 					}
 				);
 				
 				let chatDiv = document.querySelector('ul');
 				chatDiv.appendChild(chatItem);
-				/*** End filter/display messages ***/
+				
 				
 				
 				// Wait until list items are populated
@@ -112,8 +118,7 @@ function getMessages() {
 }
 
 
-function sendMessage (){
-	
+function sendMessage() {
 	let request = new XMLHttpRequest();
     request.open('POST', 'http://api.queencityiron.com/chats');
 	
@@ -127,11 +132,10 @@ function sendMessage (){
 	});
 	
 	request.send(body);
-	
 }
 
 
-// Can only be called after list items are populated
+// Only called after list items are populated / after GET request
 function setChatId() {
 	let msg = document.querySelectorAll('li');
 	for (let i=0; i<msg.length; i++) {
@@ -146,7 +150,6 @@ function setChatId() {
 
 
 function deleteMessage() {
-	
 	let request = new XMLHttpRequest();
     request.open('DELETE', 'http://api.queencityiron.com/chats');
 	
@@ -165,7 +168,6 @@ function deleteMessage() {
 	});
 	
 	request.send(body);
-	
 }
 
 function getInfo() {

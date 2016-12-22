@@ -1414,4 +1414,7 @@ img.emoji {
   width: 32px;
   height: 32px; }
 
+img.image {
+  max-width: 400px; }
+
 /*# sourceMappingURL=style.css.map */
